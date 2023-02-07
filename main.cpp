@@ -224,57 +224,24 @@ index convertIntoDecimal(string binary)
 
 }
 
-string reverseString(string str)
-{
-	int length = str.length();
-	int endingIndex;
-	char temp;
-	if (length % 2 == 0)
-	{
-		endingIndex = length - 1;
-	}
-	else
-	{
-		endingIndex = length;
-	}
-	for (int i = 0; i < length / 2; i++, endingIndex--)
-	{
-		temp = str[i];
-		str[i] = str[endingIndex];
-		str[endingIndex] = temp;
-	}
-
-	return str;
-}
-
 string convertIntoBinary(int val)
 {
-	string binary;
-	int remainder;
 	if (val == 0)
 	{
 		return "00";
 	}
-	while (val != 0)
+	if (val == 1)
 	{
-		remainder = val % 2;
-		if (remainder == 0)
-		{
-			binary += '0';
-		}
-		else
-		{
-			binary += '1';
-		}
-		val = val / 2;
+		return "01";
 	}
-	if (binary.length() < 2)
+	if (val == 2)
 	{
-		binary = '0' + binary;
+		return "10";
 	}
-
-	binary = reverseString(binary);
-	return binary;
+	if (val == 3)
+	{
+		return "11";
+	}
 }
 
 string functionk2(Keys k, string key)
@@ -342,6 +309,7 @@ int main()
 	while (key.length() != 10)
 	{
 		cout << "Error! key must be 10 bit, Enter key again: ";
+		cin >> key;
 	}
 	for (int i = 0; i < 10 && keyStatus == true; i++)
 	{
